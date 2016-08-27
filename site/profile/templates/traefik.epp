@@ -6,5 +6,5 @@ defaultEntryPoints = ["http"]
 
   [consulCatalog]
   endpoint = "<%= $facts["ipaddress"] %>:8500"
-  domain = "demo.devco.net"
+  domain = "mt_devops.devco.net"
   watch = true
