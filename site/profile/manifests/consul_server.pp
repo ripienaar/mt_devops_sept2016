@@ -3,7 +3,7 @@ class profile::consul_server {
 
   docker::run{"consul":
     image           => "consul",
-    command         => "agent --atlas-join --atlas '${facts['atlas_user']}' --atlas-token '${facts['atlas_key']}' --server --advertise ${facts['ipaddress']}",
+    command         => "agent --atlas-join --atlas '${facts['atlas_user']}' --atlas-token '${facts['atlas_key']}' --server --advertise ${facts['ipaddress']} -bootstrap-expect 3",
     env             => ["CONSUL_LOCAL_CONFIG='{\"client_addr\": \"0.0.0.0\"}'"],
     restart         => "always",
     ports           => [
