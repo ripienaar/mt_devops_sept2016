@@ -7,4 +7,4 @@ classifier::rules:
         value: ~
         invert: true
     classes:
-      - roles::%{facts.role}
+      - role::%{facts.role}
