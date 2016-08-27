@@ -1,2 +1,9 @@
----
-message: "This node is using common data"
+classifier::rules:
+  Role Nodes:
+    match: all
+    rules:
+      - fact: "%{facts.fole}"
+        operator: !=
+        value: ~
+    classes:
+      - roles::%{facts.role}

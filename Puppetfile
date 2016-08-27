@@ -1,17 +1,17 @@
 forge "http://forge.puppetlabs.com"
 
-# Modules from the Puppet Forge
-# Versions should be updated to be the latest at the time you start
-#mod "puppetlabs/inifile",     '1.5.0'
-#mod "puppetlabs/stdlib",      '4.11.0'
-#mod "puppetlabs/concat",      '2.1.0'
-
-# Modules from Git
-# Examples: https://github.com/puppetlabs/r10k/blob/master/doc/puppetfile.mkd#examples
-#mod 'apache',
-#  :git    => 'https://github.com/puppetlabs/puppetlabs-apache',
-#  :commit => '83401079053dca11d61945bd9beef9ecf7576cbf'
-
-#mod 'apache',
-#  :git    => 'https://github.com/puppetlabs/puppetlabs-apache',
-#  :branch => 'docs_experiment'
+mod 'camptocamp/systemd', '0.4.0'
+mod 'garethr/docker', '5.3.0'
+mod 'puppetlabs/apt', '2.2.2'
+mod 'puppetlabs/inifile', '1.5.0'
+mod 'puppetlabs/stdlib', '4.12.0'
+mod 'ripienaar/classifier', '0.0.8'
+mod 'ripienaar/mcollective', '0.0.19'
+mod 'ripienaar/mcollective_agent_filemgr', '1.1.0'
+mod 'ripienaar/mcollective_agent_package', '4.4.0/2'
+mod 'ripienaar/mcollective_agent_puppet', '1.11.1'
+mod 'ripienaar/mcollective_agent_service', '3.1.3'
+mod 'ripienaar/mcollective_choria', '0.0.8'
+mod 'ripienaar/mcollective_util_actionpolicy', '2.1.0'
+mod 'ripienaar/nats', '0.0.3'
+mod 'stahnma/epel', '1.2.2'
