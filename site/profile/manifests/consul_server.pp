@@ -5,7 +5,7 @@ class profile::consul_server {
     image           => "consul",
     command         => "agent --atlas-join --atlas '${facts['atlas_user']}' --atlas-token '${facts['atlas_key']}' --server --advertise ${facts['ipaddress']}",
     env             => ['CONSUL_LOCAL_CONFIG={"client_addr": "0.0.0.0"}'],
-    restart_service => true,
+    restart         => "always",
     ports           => [
       "8300:8300/TCP",
       "8301:8301/TCP",
