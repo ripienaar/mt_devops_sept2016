@@ -3,8 +3,8 @@ class profile::consul_agent {
 
   docker::run{"consul":
     image           => "consul",
-    command         => "agent --atlas-join --atlas '${facts['atlas_user']}' --atlas-token '${facts['atlas_key']}'",
-    env             => ["CONSUL_LOCAL_CONFIG='{\"client_addr\": \"0.0.0.0\"}'"],
+    command         => "agent --atlas-join --atlas '${facts['atlas_user']}' --atlas-token '${facts['atlas_key']}' --advertise ${facts['ipaddress']}",
+    env             => ["CONSUL_LOCAL_CONFIG='{\"client_addr\": \"0.0.0.0\"}'", "SERVICE_IGNORE=1"],
     restart         => "always",
     ports           => [
       "8300:8300/TCP",

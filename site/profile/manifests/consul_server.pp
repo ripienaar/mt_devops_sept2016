@@ -4,7 +4,7 @@ class profile::consul_server {
   docker::run{"consul":
     image           => "consul",
     command         => "agent --atlas-join --atlas '${facts['atlas_user']}' --atlas-token '${facts['atlas_key']}' --server --advertise ${facts['ipaddress']} -bootstrap-expect 3",
-    env             => ["CONSUL_LOCAL_CONFIG='{\"client_addr\": \"0.0.0.0\"}'"],
+    env             => ["CONSUL_LOCAL_CONFIG='{\"client_addr\": \"0.0.0.0\"}'", "SERVICE_IGNORE=1"],
     restart         => "always",
     ports           => [
       "8300:8300/TCP",
