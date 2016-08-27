@@ -22,3 +22,4 @@ classifier::rules:
         invert: true
     classes:
       - role::%{facts.role}
+      - role::common
