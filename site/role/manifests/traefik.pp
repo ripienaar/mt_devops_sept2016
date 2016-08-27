@@ -1,3 +1,3 @@
 class role::traefik {
-  include docker
+  include profile::consul_server
 }
