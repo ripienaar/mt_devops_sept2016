@@ -1,3 +1,4 @@
 class role::compute {
-  include docker
+  include profile::consul_agent
+  include profile::registrator_server
 }
