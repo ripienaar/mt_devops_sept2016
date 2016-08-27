@@ -5,6 +5,6 @@ defaultEntryPoints = ["http"]
   address = ":8080"
 
   [consulCatalog]
-  endpoint = "127.0.0.1:8500"
+  endpoint = "<%= $facts["ipaddress"] %>:8500"
   domain = "demo.devco.net"
   watch = true

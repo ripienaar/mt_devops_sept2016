@@ -2,10 +2,10 @@ class profile::traefik_server {
   include docker
 
   file{"/etc/traefik.toml":
-    source => "puppet:///modules/profile/traefik.toml",
-    owner  => "root",
-    group  => "root",
-    mode   => "0400"
+    content => epp("profile/traefik.epp"),
+    owner   => "root",
+    group   => "root",
+    mode    => "0400"
   } ->
 
   docker::run{"traefik":
