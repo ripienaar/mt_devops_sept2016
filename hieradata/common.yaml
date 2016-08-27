@@ -3,7 +3,8 @@ classifier::rules:
     match: all
     rules:
       - fact: "%{facts.fole}"
-        operator: !=
+        operator: ==
         value: ~
+        invert: true
     classes:
       - roles::%{facts.role}
