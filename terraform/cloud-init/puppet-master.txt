@@ -1,0 +1,25 @@
+#cloud-config
+
+users:
+  - name: rip
+    gecos: R.I.Pienaar
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    ssh-authorized-keys:
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC3XZsf4OmqktsCtmGTX91ORpCt34pFS9dGcrvLGhgIacr1pCCz9F/QDghNRdH+LmcpXrzXF5E7yQ0JFn0ICLwpW2ftcY3y+c6qV+NIYpuyQv5IhDrY5HU7n9+Lypive4wtrv2JatXWyI1GheQws8wgM9mcSNL3awEYSfE0LqIK1/Wyh+dQxHUdNOcBBTs/R3Jllrzkb5b0pDHncQLOJy73d68QF5aiWKS7WVpPkxAOCAwXqqfR6egA8HB5CT2tGZlgBIJkxx3pFUEXtCkNQrl7HSmGAc1zeHpUKAfv1z0t5HtL8r/RH7L1uHaSVhrMGfMcFCXQo0ez7l5/otv/TiDGtaSmZL0vaJPeRvzRmMKOf6LMUBGs/IHCe2vErZ/XkBlNCSa2zTvJ+FstBG8i66BrfDGdCv84bYP9AKHULpww+MfWT70xVX+UUkBU8NbjY/t7Nv5mKPsLpfnIhOyty1yKEnTEkfmuJIGBa4chFXIHcNR9wvuuboL1CB95wyKxf/Jw8SGk+Wk5WMFz8/8qpxGriR10BE0+m0SgN+ubhM+wdVl+puap20EOhRlBgiM/LrIdMwsHTtPWtGhKBZK9jLpgg7nhrFmjrpoK155ggArIOd5lYDVIMtRs0a147hxGpS8N3F/Trq4feJ02V+JqBpfVuS9EuM8xkfs1B+22AFC65w== rip@liberate.local"
+      - "ssh-dss AAAAB3NzaC1kc3MAAACBANGfJJiBAw9Z+Ux+VYkB9vEbbon3IcAculFPwgJMHZrVAamVRYZ225VDL/P5Eg/fZutlZoRtIgc0EKSgM6Ib3tB1pTNoizMXSrapgITQmFJJ/z23jRRKhtSUTdqd0J5aa26tnr7L/0wiHCJgy+jYDtEL5bz+aw09ix+FVxtF8CSFAAAAFQDthYBjrgnbzQXLfBHkY4fhVIGAsQAAAIEAlbO3OSYW9t5lxCLTGt3B25xkU6zcHKG62gcz2mGkv45PJFNv/G9igAs35P+LM/xFupGFgO1SUjOrMAq8FoYP8xAKEhAv5rT6RSLhF5ewu5a8OUVT59Vy/eXbAXlJVcT4f0VMXCu26wKZaiGcXB1yApHQaUM5Ik9WRzxOQQUwjWQAAACAWvH99NSEMybEgOnK+DlByy/xWQeLZG7ydNoZT/MmOUAUTx0RSPZU7Aa5lrGydpvpk2GNtJOQfCeFmURc3HL06VH7PaYUSCCvi5Ywudlm7NR0GoRVQBiLdUGvsQX0bZNCCp16Mo2eSvZEr2AU4LPLGd1Hjg3lBezP3ICFkVM1hjU= 13_inch_air"
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAgEAwbswPoq2Xz2SVHfbs7D3wY7o0QgECvOnZEROTkXSmF6AiNAB7nvDgqNKhWwqWVK3xmNNauBYFiFWP/N1j6AC4focGLa/eZ/V1j9w/HKfPuGKsl9vV/wUEEglVVdSdEZt3ocJ6TvY+7QYzWuL9ioGwaB2F8JyRUyK+vW4YRTvRRKwQ188mg4vvAg+f9COuJbuO4lemNH64+w/C/X80BarKBRuWFLB09+dYwMFxSNkR2ZrNq/5zvdbsRk1UmHXeN6aHdcuht4SRSz1OvgYbixB6gLUIYi6w86ams31yYQUYwijUYFlGeXCqGutUWeZKGlIKm0e7DX+irSkWRODkUNQ6OVOtDfpCWlhzdfFYL/Z72MbjMp50qmYdSU7Gik6ljbdVf6/M2kiuunDE2lBdj07ax3f/VwYiAqOwGU+vX1MPjUmNZ1TGL8g54jYOeQ/Ckb3CKZD/pvUyJ2+C7StMF1dfraZHoWzLOrnJrefmSAkNTiCT4SmbCjGvTfQ+25B+EZ1VnNqnMhkRGBBQAiQrb11AvEIFvc8MZAvS6EpBLGt3jCPs6/lPnbY8Mlju5x39IZJT94QgJrzrwwEt8/0LfBmJouE04xsZgV3uwPae/H1cB4y/YbqGqH8SBptaX41cSGGQHWcIdrJvHCoojT8CVkIdSSn2Ez7BFu7SDBLfMC10ZM= rip@devco.net"
+
+runcmd:
+  - "rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm"
+  - "yum -y install puppet-agent puppetserver git"
+  - "/opt/puppetlabs/bin/puppet resource host puppet ensure=present ip=127.0.0.1"
+  - "echo '*' > /etc/puppetlabs/puppet/autosign.conf"
+  - "echo role=puppet_master > /opt/puppetlabs/facter/facts.d/role.txt"
+  - "/opt/puppetlabs/puppet/bin/gem install r10k --no-ri --no-rdoc"
+  - "cd /tmp;git clone https://github.com/ripienaar/mt_devops_sept2016.git"
+  - "mkdir -p /etc/puppetlabs/r10k /opt/puppetlabs/r10k/cache"
+  - "cp /tmp/mt_devops_sept2016/r10k.yaml /etc/puppetlabs/r10k"
+  - "/opt/puppetlabs/puppet/bin/r10k deploy environment --puppetfile"
+  - "/opt/puppetlabs/bin/puppet config set --section main waitforcert 10"
+  - "systemctl start puppetserver.service"
+  - "systemctl start puppet.service"
