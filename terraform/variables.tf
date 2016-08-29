@@ -14,14 +14,18 @@ variable "atlas_token" {
   description = "Access token for Hashcorp Atlas"
 }
 
+variable "forecast_io_token" {
+  description = "Access token for forecast.io"
+}
+
 variable "compute_count" {
   description = "Amount of compute instances per AZ"
-  default = 3
+  default = 4
 }
 
 variable "traefik_count" {
   description = "Amount of traefik instances per AZ"
-  default = 2
+  default = 3
 }
 
 variable "region" {
@@ -34,11 +38,6 @@ variable "avail_zone_a" {
   default     = "eu-central-1a"
 }
 
-variable "avail_zone_b" {
-  description = "AWS availability zone to host your B network"
-  default     = "eu-central-1b"
-}
-
 variable "vpc_cidr" {
   description = "CIDR for VPC"
   default     = "10.128.0.0/16"
@@ -47,11 +46,6 @@ variable "vpc_cidr" {
 variable "public_subnet_a_cidr" {
   description = "CIDR for public subnet in availability zone A"
   default     = "10.128.1.0/24"
-}
-
-variable "public_subnet_b_cidr" {
-  description = "CIDR for public subnet in availability zone B"
-  default     = "10.128.2.0/24"
 }
 
 /* https://aws.amazon.com/marketplace/ordering?productId=b7ee8a69-ee97-4a49-9e68-afaee216db2e&ref_=dtl_psb_continue&region=us-east-1 */

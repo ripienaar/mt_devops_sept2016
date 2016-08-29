@@ -21,9 +21,7 @@ resource "aws_route53_record" "whois_mt_devops-ns" {
     name = "whoami.mt_devops.devco.net"
     type = "CNAME"
     ttl = "30"
-    records = [
-      "${aws_elb.mt_devops.dns_name}."
-    ]
+    records = ["${aws_elb.mt_devops.dns_name}."]
 }
 
 resource "aws_route53_record" "shell_mt_devops-ns" {
@@ -31,9 +29,7 @@ resource "aws_route53_record" "shell_mt_devops-ns" {
     name = "shell.mt_devops.devco.net"
     type = "CNAME"
     ttl = "30"
-    records = [
-      "${aws_instance.puppetmaster.public_dns}"
-    ]
+    records = ["${aws_instance.puppetmaster.public_dns}"]
 }
 
 output "mt_devops_nameservers" {

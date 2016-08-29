@@ -1,0 +1,10 @@
+{
+  "README.md": "a493ee9f1729e55fff4c9f148d6771a5",
+  "data/defaults.yaml": "e91d9fc1e8176a1aa1f71cb7a4cc3abb",
+  "data/plugin.yaml": "002082dab65de082f1d80a01b5a3a81c",
+  "files/mcollective/agent/weather.ddl": "6d428e0fc5a07675f179fbaf2660e15e",
+  "files/mcollective/agent/weather.rb": "9fd8942d586a3d58e6ff79359e7fc157",
+  "hiera.yaml": "3d31dfa7be184e008811f2ee66b361b3",
+  "manifests/init.pp": "db1b02ad8dc39dfbfc6b9e7c117d72ea",
+  "metadata.json": "4b983208c9010d48b51645cb5d537f21"
+}

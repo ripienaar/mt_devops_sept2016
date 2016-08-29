@@ -26,24 +26,6 @@ resource "aws_instance" "a_compute" {
   }
 }
 
-resource "aws_instance" "b_compute" {
-  count = "${var.compute_count}"
-  ami = "${lookup(var.amis, var.region)}"
-  instance_type = "t2.medium"
-  subnet_id = "${aws_subnet.public_b_subnet.id}"
-  vpc_security_group_ids = ["${aws_security_group.internal.id}", "${aws_security_group.management.id}"]
-  source_dest_check = false
-  user_data = "${template_file.compute_init.rendered}"
-  root_block_device {
-    volume_type = "standard"
-    volume_size = 8
-    delete_on_termination = true
-  }
-  tags = {
-    Project = "mt_devops"
-  }
-}
-
 output "compute" {
-  value = ["${aws_instance.a_compute.*.public_dns}", "${aws_instance.b_compute.*.public_dns}"]
+  value = ["${aws_instance.a_compute.*.public_dns}"]
 }

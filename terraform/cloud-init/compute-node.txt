@@ -16,5 +16,6 @@ runcmd:
   - "echo role=${role} > /opt/puppetlabs/facter/facts.d/role.txt"
   - "echo 'atlas_user=${atlas_user}' > /opt/puppetlabs/facter/facts.d/atlas_user.txt"
   - "echo 'atlas_key=${atlas_token}' > /opt/puppetlabs/facter/facts.d/atlas_key.txt"
+  - "echo 'forecast_key=${forecast_io_token}' > /opt/puppetlabs/facter/facts.d/forecast_io_token.txt"
   - "/opt/puppetlabs/bin/puppet config set --section main waitforcert 10"
   - "systemctl start puppet.service"

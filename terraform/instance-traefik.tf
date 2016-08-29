@@ -28,26 +28,6 @@ resource "aws_instance" "a_traefik" {
   }
 }
 
-resource "aws_instance" "b_traefik" {
-  count = "${var.traefik_count}"
-  ami = "${lookup(var.amis, var.region)}"
-  instance_type = "t2.micro"
-  subnet_id = "${aws_subnet.public_b_subnet.id}"
-  vpc_security_group_ids = ["${aws_security_group.internal.id}", "${aws_security_group.traefik.id}"]
-  source_dest_check = false
-  user_data = "${template_file.traefik_init.rendered}"
-
-  root_block_device {
-    volume_type = "standard"
-    volume_size = 8
-    delete_on_termination = true
-  }
-
-  tags = {
-    Project = "mt_devops"
-  }
-}
-
 output "traefik" {
-  value = ["${aws_instance.a_traefik.*.public_dns}", "${aws_instance.b_traefik.*.public_dns}"]
+  value = ["${aws_instance.a_traefik.*.public_dns}"]
 }

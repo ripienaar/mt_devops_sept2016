@@ -19,8 +19,8 @@ resource "aws_elb" "mt_devops" {
   connection_draining = true
   connection_draining_timeout = 400
 
-  instances = ["${aws_instance.a_traefik.*.id}", "${aws_instance.b_traefik.*.id}"]
-  subnets = ["${aws_subnet.public_a_subnet.id}", "${aws_subnet.public_b_subnet.id}"]
+  instances = ["${aws_instance.a_traefik.*.id}"]
+  subnets = ["${aws_subnet.public_a_subnet.id}"]
   security_groups = ["${aws_security_group.front_elb.id}"]
 
   tags {

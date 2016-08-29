@@ -1,0 +1,16 @@
+lookup_options:
+  mcollective_agent_weather::gem_dependencies:
+    merge:
+      strategy: deep
+  mcollective_agent_weather::package_dependencies:
+    merge:
+      strategy: deep
+  mcollective_agent_weather::config:
+    merge:
+      strategy: deep
+  mcollective_agent_weather::client_config:
+    merge:
+      strategy: deep
+  mcollective_agent_weather::server_config:
+    merge:
+      strategy: deep
