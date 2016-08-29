@@ -48,11 +48,11 @@ module MCollective
       action "status" do
         reply[:releases] = []
 
-        existing = []
+        existing = ""
         status = run("/bin/docker ps -f name=weather --format \"{{.ID}}\t{{.Image}}\t{{.Names}}\"", :stdout => existing, :chomp => true)
 
-        existing.each do |running|
-          id, image, name = running.split("\t")
+        existing.each_line do |running|
+          id, image, name = running.chomp.split("\t")
 
           reply[:releases] << {"id" => id, "image" => image, "name" => name}
         end
