@@ -10,12 +10,13 @@ module MCollective
 
         reply.fail!("Could not fetch weather release %d" % request[:release]) unless status == 0
 
-        existing = []
+        existing = ""
         status = run("/bin/docker ps -f name=weather -q", :stdout => existing, :chomp => true)
 
         reply.fail!("Could not fetch existing weather instances") unless status == 0
 
-        existing.each do |id|
+        existing.each_line do |id|
+          id.chomp!
           Log.info("Deleting weather instance %s" % id)
           status = run("/bin/docker kill %s" % id)
           reply.fail!("Could not kill weather instances %s" % id) unless status == 0
