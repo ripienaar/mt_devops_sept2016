@@ -32,6 +32,7 @@ module MCollective
             "-e FORECAST_LAT=14.5125",
             "-e FORECAST_LOCATION=\"Valletta, Malta\"",
             "-p 9292",
+            "-d",
             "--name weather.%d" % instance,
             "--restart always",
             "quay.io/ripienaar/weather:%d" % request[:release]
@@ -45,7 +46,7 @@ module MCollective
       end
 
       action "status" do
-        output[:releases] = []
+        reply[:releases] = []
 
         existing = []
         status = run("/bin/docker ps -f name=weather --format \"{{.ID}}\t{{.Image}}\t{{.Names}}\"", :stdout => existing, :chomp => true)
@@ -53,7 +54,7 @@ module MCollective
         existing.each do |running|
           id, image, name = running.split("\t")
 
-          output[:releases] << {"id" => id, "image" => imgage, "name" => name}
+          reply[:releases] << {"id" => id, "image" => imgage, "name" => name}
         end
       end
     end
