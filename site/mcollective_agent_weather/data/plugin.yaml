@@ -1,10 +1,10 @@
 ---
 mcollective_agent_weather::config_name: weather
 mcollective_agent_weather::common_files:
-- lib/mcollective/agent/weather.ddl
+- agent/weather.ddl
 mcollective_agent_weather::common_directories: []
 mcollective_agent_weather::server_files:
-- lib/mcollective/agent/weather.rb
+- agent/weather.rb
 mcollective_agent_weather::server_directories: []
 mcollective_agent_weather::client_files: []
 mcollective_agent_weather::client_directories: []
