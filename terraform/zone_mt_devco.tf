@@ -1,6 +1,5 @@
 resource "aws_route53_zone" "mt_devops" {
   name = "mt_devops.devco.net"
-  vpc_id = "${aws_vpc.mt_devops_default.id}"
 }
 
 resource "aws_route53_record" "mt_devops-ns" {
@@ -16,6 +15,14 @@ resource "aws_route53_record" "mt_devops-ns" {
     ]
 }
 
+resource "aws_route53_record" "weather_mt_devops-ns" {
+    zone_id = "${aws_route53_zone.mt_devops.zone_id}"
+    name = "weather.mt_devops.devco.net"
+    type = "CNAME"
+    ttl = "30"
+    records = ["${aws_elb.mt_devops.dns_name}."]
+}
+
 resource "aws_route53_record" "whois_mt_devops-ns" {
     zone_id = "${aws_route53_zone.mt_devops.zone_id}"
     name = "whoami.mt_devops.devco.net"
@@ -29,7 +36,7 @@ resource "aws_route53_record" "shell_mt_devops-ns" {
     name = "shell.mt_devops.devco.net"
     type = "CNAME"
     ttl = "30"
-    records = ["${aws_instance.puppetmaster.public_dns}"]
+    records = ["${aws_instance.puppetmaster.public_dns}."]
 }
 
 output "mt_devops_nameservers" {

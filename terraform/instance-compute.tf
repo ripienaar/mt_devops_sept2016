@@ -5,6 +5,7 @@ resource "template_file" "compute_init" {
     atlas_user = "${var.atlas_user}/infrastructure"
     atlas_token = "${var.atlas_token}"
     role = "compute"
+    forecast_io_token = "${var.forecast_io_token}"
   }
 }
 

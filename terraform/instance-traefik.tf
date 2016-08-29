@@ -5,6 +5,7 @@ resource "template_file" "traefik_init" {
     atlas_user = "${var.atlas_user}/infrastructure"
     atlas_token = "${var.atlas_token}"
     role = "traefik"
+    forecast_io_token = "unknown"
   }
 }
 
