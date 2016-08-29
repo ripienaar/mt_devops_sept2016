@@ -54,7 +54,7 @@ module MCollective
         existing.each do |running|
           id, image, name = running.split("\t")
 
-          reply[:releases] << {"id" => id, "image" => imgage, "name" => name}
+          reply[:releases] << {"id" => id, "image" => image, "name" => name}
         end
       end
     end
