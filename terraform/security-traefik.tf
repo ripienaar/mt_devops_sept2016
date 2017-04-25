@@ -12,7 +12,7 @@ resource "aws_security_group" "traefik" {
     from_port = 8080
     to_port   = 8080
     protocol  = "tcp"
-    cidr_blocks = ["80.85.84.108/32", "139.162.163.118/32"]
+    cidr_blocks = ["80.85.84.108/32", "84.255.40.82/32"]
   }
 
   tags {
